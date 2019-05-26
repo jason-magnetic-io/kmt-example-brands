@@ -1,0 +1,16 @@
+## specify here the resource you want to include
+resources:
+- deployment.yaml
+
+## appended to the names of all resources
+nameSuffix: -1.0.3
+
+## labels to add to all resources
+commonLabels:
+  app: sava-product
+  version: 1.0.3
+
+## image tag
+images:
+- name: vampio/sava-product
+  newTag: 1.0.3
