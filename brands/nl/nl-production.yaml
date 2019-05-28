@@ -1,0 +1,5 @@
+services:
+- name: sava-product
+  version: v1.0.3
+- name: sava-cart
+  version: v1.0.5
