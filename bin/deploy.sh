@@ -4,7 +4,6 @@ set -e
 
 for brand in $(ls brands)
 do
-	echo $brand
 	for config in $(ls brands/$brand/*.yaml)
 	do
 		context=$(basename $config | cut -d'.' -f1)
