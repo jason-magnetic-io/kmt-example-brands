@@ -19,15 +19,20 @@ jobs:
           name: Connect to clusters
           command: |
             gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME1 --region $GOOGLE_CLUSTER_REGION1
+            context=gke_$GOOGLE_PROJECT_ID_$GOOGLE_CLUSTER_REGION1_$GOOGLE_CLUSTER_NAME1
+            kubectl config set-context ie-production --cluster=$context --user=$context
+            kubectl config set-context nl-production --cluster=$context --user=$context
+            kubectl config set-context pt-production --cluster=$context --user=$context
+            kubectl config set-context se-production --cluster=$context --user=$context
       - run:
           name: Update deployments
           command: |
             sudo pip install -r bin/requirements.txt
           
-            chmod +x bin/deploy.sh
-          
             git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
             
+            chmod +x bin/deploy.sh          
+            bin/deploy.sh
             
             git add .
             if [ `git status -s | wc -l` -gt 0 ]
