@@ -1,6 +1,7 @@
 import argparse
 from distutils.dir_util import copy_tree
 from os.path import isdir, isfile, join
+import sys
 import yaml
 
 YAML_EXTENSIONS = ['.yml', '.yaml']
@@ -49,8 +50,16 @@ def read_yaml(yaml_file_path):
     with open(yaml_file_path, 'r') as f:
         return yaml.safe_load(f)
 
-def get_service_versions(config):
-    return read_yaml(config)
+def write_yaml(yaml_file_path, data):
+    with open(yaml_file_path, 'w') as f:
+        yaml.dump(data, f, default_flow_style=False)
+    
+def read_env_config(config_file):
+    return read_yaml(config_file)
+    
+def write_env_config(config_file, data, updated):
+		data['updated'] = updated
+		write_yaml(config_file, data)
     
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -82,10 +91,13 @@ def copy_service_version(service, src_path, dst_path):
 def main():
     args = parse_args()
     
-    config = get_service_versions(args.config)
-    for service in config['services']:
-        copy_service_version(service, args.src_path, args.dst_path)
-
+    env_config = read_env_config(args.config)
+    if env_config['updated']:
+        for service in env_config['services']:
+            copy_service_version(service, args.src_path, args.dst_path)
+        write_env_config(args.config, env_config, False)
+    else:
+        sys.exit(4) # nothing to copy
 
 if __name__ == '__main__':
     main()
