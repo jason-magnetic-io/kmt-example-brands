@@ -1,0 +1,51 @@
+version: 2.1
+defaults: &defaults
+  docker:
+    - image: vampio/kmt:circleci-latest
+orbs:
+  gcp-cli: circleci/gcp-cli@1.3.0
+jobs:
+  update-deployments:
+    <<: *defaults
+    steps:
+      - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
+      - add_ssh_keys:
+          fingerprints:
+            - "92:ca:b9:9d:2b:a6:14:3e:f5:45:4c:bb:d9:cf:04:ed"
+            - "62:c1:24:8f:af:ce:8c:b8:d7:97:72:34:46:b9:44:c2"
+      - run:
+          name: Connect to clusters
+          command: |
+            gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME1 --region GOOGLE_CLUSTER_REGION1
+      - run:
+          name: Update deployments
+          command: |
+            sudo pip install -r bin/requirements.txt
+          
+            chmod +x bin/deploy.sh
+          
+            git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
+            
+            
+            git add .
+            if [ `git status -s | wc -l` -gt 0 ]
+            then
+              git config user.email "${GITHUB_EMAIL}"
+              git config user.name "${CIRCLE_USERNAME}"
+              git commit -m "Updated environments"
+              git pull --rebase && git push origin master
+            else
+              echo "No change were detected. Skipping."
+            fi
+     
+workflows:
+  version: 2
+  publish-version:
+    jobs:
+      - update-deployments:
+          filters:
+            branches:
+              only:
+                - master
