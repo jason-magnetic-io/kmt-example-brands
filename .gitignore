@@ -1,2 +1,4 @@
 bin/Pipfile*
+
 *service-catalog/
+*applications/
