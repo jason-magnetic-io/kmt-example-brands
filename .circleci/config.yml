@@ -24,6 +24,7 @@ jobs:
             kubectl config set-context nl-production --cluster=$context --user=$context
             kubectl config set-context pt-production --cluster=$context --user=$context
             kubectl config set-context se-production --cluster=$context --user=$context
+            kubectl config get-contexts
       - run:
           name: Update deployments
           command: |
@@ -32,7 +33,7 @@ jobs:
             git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
             
             chmod +x bin/deploy.sh          
-            bin/deploy.sh
+            echo "bin/deploy.sh"
             
             git add .
             if [ `git status -s | wc -l` -gt 0 ]

@@ -16,6 +16,5 @@ do
 		  --dst-path brands/$brand/production/services
     kubectl config use-context $context
 #		kustomize build brands/$brand/$environment | kubectl apply -f -
-		kustomize build brands/$brand/$environment
 	done
 done
