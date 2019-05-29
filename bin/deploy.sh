@@ -15,6 +15,6 @@ do
 		  --src-path kmt-example-service-catalog \
 		  --dst-path brands/$brand/production/services
     kubectl config use-context $context
-#		kustomize build brands/$brand/$environment | kubectl apply -f -
+		kustomize build brands/$brand/$environment | kubectl apply -f -
 	done
 done
