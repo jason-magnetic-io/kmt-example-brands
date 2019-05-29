@@ -10,12 +10,21 @@ then
 		do
 			context=$(basename $config | cut -d'.' -f1)
 			environment=$(echo $context | cut -d'-' -f2)
+
 			echo "Updating $brand $environment"
+
+			vamp-kmt \
+			  --service-defs kmt-example-service-catalog \
+			  --application kmt-example-applications/$brand/$environment.yaml \
+			  --environment $config \
+			  --output brands/$brand/$environment
+
 			updated_flag=true
-			python bin/copy_services.py \
+			python3 bin/copy_services.py \
 				--config $config \
 				--src-path kmt-example-service-catalog \
-				--dst-path brands/$brand/production/services || updated_flag=false
+				--dst-path brands/$brand/$environment/services || updated_flag=false
+
 			if [ "$updated_flag" = true ]
 			then
 				kubectl config use-context $context
