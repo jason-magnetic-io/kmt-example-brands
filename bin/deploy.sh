@@ -10,10 +10,10 @@ do
 		context=$(basename $config | cut -d'.' -f1)
 		environment=$(echo $context | cut -d'-' -f2)
 		echo "Updating $brand $environment"
-#		python bin/copy_services.py
-#		  --config $config \
-#		  --src-path kmt-example-service-catalog \
-#		  --dst-path brands/$brand/production/services
+		python bin/copy_services.py
+		  --config $config \
+		  --src-path kmt-example-service-catalog \
+		  --dst-path brands/$brand/production/services
     kubectl config use-context $context
 		kustomize build brands/$brand/$environment | kubectl apply -f -
 	done
