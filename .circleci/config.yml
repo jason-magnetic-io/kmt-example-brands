@@ -19,7 +19,7 @@ jobs:
           name: Connect to clusters
           command: |
             gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME1 --region $GOOGLE_CLUSTER_REGION1
-            context=gke_$GOOGLE_PROJECT_ID_$GOOGLE_CLUSTER_REGION1_$GOOGLE_CLUSTER_NAME1
+            context=gke_${GOOGLE_PROJECT_ID}_${GOOGLE_CLUSTER_REGION1}_${GOOGLE_CLUSTER_NAME1}
             kubectl config set-context ie-production --cluster=$context --user=$context
             kubectl config set-context nl-production --cluster=$context --user=$context
             kubectl config set-context pt-production --cluster=$context --user=$context
