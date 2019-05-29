@@ -93,7 +93,7 @@ def main():
     
     env_config = read_env_config(args.config)
     if env_config['updated']:
-        for service in env_config['services']['computed']:
+        for service in env_config['computed-services']:
             copy_service_version(service, args.src_path, args.dst_path, version_prefix="v")
         write_env_config(args.config, env_config, False)
     else:
