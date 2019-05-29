@@ -83,8 +83,8 @@ def parse_args():
 
     return args
 
-def copy_service_version(service, src_path, dst_path):
-    src = join(src_path, join(service['name'], service['version']))
+def copy_service_version(service, src_path, dst_path, version_prefix=""):
+    src = join(src_path, join(service['name'], version_prefix + service['version']))
     dst = join(dst_path, service['name'])
     copy_tree(src, dst)
     
@@ -93,8 +93,8 @@ def main():
     
     env_config = read_env_config(args.config)
     if env_config['updated']:
-        for service in env_config['services']:
-            copy_service_version(service, args.src_path, args.dst_path)
+        for service in env_config['services']['computed']:
+            copy_service_version(service, args.src_path, args.dst_path, version_prefix="v")
         write_env_config(args.config, env_config, False)
     else:
         sys.exit(4) # nothing to copy
