@@ -1,6 +1,27 @@
+computed-services:
+- name: sava-product
+  version: 1.0.3
+- name: sava-cart
+  version: 1.0.5
+environment:
+  name: pt-production
 services:
 - name: sava-product
-  version: v1.0.3
+  port: 9070
+  vamp:
+    gateway:
+      selector:
+        discriminator: version
+        type: label
+    name: <name>
+  version: ^1.0
 - name: sava-cart
-  version: v1.0.5
+  port: 9080
+  vamp:
+    gateway:
+      selector:
+        discriminator: version
+        type: label
+    name: <name>
+  version: ^1.0
 updated: false
