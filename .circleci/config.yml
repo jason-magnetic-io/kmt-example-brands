@@ -28,23 +28,29 @@ jobs:
       - run:
           name: Update deployments
           command: |
-            sudo pip install -r bin/requirements.txt
-          
-            git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
-            
-            chmod +x bin/deploy.sh          
-            bin/deploy.sh
-            
-            git add .
-            if [ `git status -s | wc -l` -gt 0 ]
+            if [ -e updated ]
             then
-              git config user.email "${GITHUB_EMAIL}"
-              git config user.name "${CIRCLE_USERNAME}"
-              git commit -m "Updated environments"
-              git pull --rebase && git push origin master
+              sudo pip install -r bin/requirements.txt
+          
+              git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
+            
+              chmod +x bin/deploy.sh          
+              bin/deploy.sh
+            
+              git add .
+              if [ `git status -s | wc -l` -gt 0 ]
+              then
+                git config user.email "${GITHUB_EMAIL}"
+                git config user.name "${CIRCLE_USERNAME}"
+                git commit -m "Updated environments"
+                git pull --rebase && git push origin master
+              else
+                echo "No change were detected. Skipping."
+              fi
             else
-              echo "No change were detected. Skipping."
+              echo "Nothing to update. Skipping."
             fi
+
      
 workflows:
   version: 2
