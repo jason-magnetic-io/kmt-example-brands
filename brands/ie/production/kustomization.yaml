@@ -9,3 +9,4 @@ bases:
 
 resources:
 - infrastructure/namespace.yaml
+- infrastructure/vamp/workflows/quantification/service-account.yaml

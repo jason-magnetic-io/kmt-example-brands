@@ -1,0 +1,25 @@
+name: quantification
+kind: breeds
+deployable:
+  definition: magneticio/vamp-ee-workflows:1.1.1-quantification
+ports:
+  webport: 8080/http
+environment_variables:
+  VAMP_URL                            : ${config://vamp.workflow-driver.workflow.vamp-url}
+  VAMP_API_TOKEN                      : ${vamp://token}
+  VAMP_NAMESPACE                      : ${config://vamp.namespace}
+  VAMP_PULSE_ELASTICSEARCH_URL        : ${config://vamp.workflow-driver.workflow.vamp-elasticsearch-url}
+  VAMP_WORKFLOW_EXECUTION_PERIOD      : ${config://vamp.workflow-driver.workflow.vamp-workflow-execution-period}
+  VAMP_WORKFLOW_EXECUTION_TIMEOUT     : ${config://vamp.workflow-driver.workflow.vamp-workflow-execution-timeout}
+  VAMP_HEALTH                         : true
+  VAMP_ELASTICSEARCH_HEALTH_INDEX     : ${es://health}
+  VAMP_HEALTH_TIME_WINDOW             : 500
+  VAMP_METRICS                        : true
+  VAMP_ELASTICSEARCH_METRICS_INDEX    : ${es://metrics}
+  VAMP_METRICS_TIME_WINDOW            : 500
+  VAMP_CAPACITY                       : true
+  VAMP_ELASTICSEARCH_CAPACITY_INDEX   : ${es://capacity}
+  VAMP_ALLOCATION                     : true
+  VAMP_ELASTICSEARCH_ALLOCATION_INDEX : ${es://allocation}
+  VAMP_GATEWAY_DRIVER_ELASTICSEARCH_METRICS_TYPE : log
+  VAMP_GATEWAY_DRIVER_ELASTICSEARCH_METRICS_INDEX: vamp-vga-${config://vamp.namespace}-*
