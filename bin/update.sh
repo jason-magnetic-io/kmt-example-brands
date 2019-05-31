@@ -12,6 +12,8 @@ then
 			environment=$(echo $context | cut -d'-' -f2)
 
 			echo "Updating $brand $environment"
+			
+			bin/update-vamp-config.sh -p brands/$brand/$environment/infrastructure/vamp -o $brand -e $environment
 
 			vamp-kmt \
 			  --service-defs kmt-example-service-catalog \
