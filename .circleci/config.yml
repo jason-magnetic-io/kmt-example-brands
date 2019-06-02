@@ -34,8 +34,8 @@ jobs:
           
               git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
             
-              chmod +x bin/deploy.sh          
-              bin/deploy.sh
+              chmod +x bin/update.sh          
+              bin/update.sh
             
               git add .
               if [ `git status -s | wc -l` -gt 0 ]
