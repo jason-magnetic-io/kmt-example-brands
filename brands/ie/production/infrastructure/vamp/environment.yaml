@@ -53,7 +53,7 @@ vamp:
         resource: /io/vamp/gateway_driver/haproxy/template.twig
   workflow-driver:
     workflow:
-      vamp-elasticsearch-url: http://elasticsearch.vamp.svc:9200
+      vamp-elasticsearch-url: http://elasticsearch.vamp.svc.cluster.local:9200
       vamp-key-value-store-connection: ${env://VAMP_WORKFLOW_DRIVER_WORKFLOW_VAMP_KEY_VALUE_STORE_CONNECTION}
       vamp-key-value-store-path: /secret/vamp/${namespace}/workflows/${workflow}
       vamp-key-value-store-token: ${env://VAMP_WORKFLOW_DRIVER_WORKFLOW_VAMP_KEY_VALUE_STORE_TOKEN}

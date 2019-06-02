@@ -3,4 +3,4 @@ bin/Pipfile*
 *service-catalog/
 *applications/
 
-certs/
+brands/**/infrastructure/vamp/common
