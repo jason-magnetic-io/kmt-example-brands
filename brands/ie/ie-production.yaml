@@ -7,7 +7,6 @@ environment:
   name: ie-production
 services:
 - name: sava-product
-  port: 9070
   vamp:
     gateway:
       selector:
@@ -16,7 +15,6 @@ services:
     name: <name>
   version: ^1.0
 - name: sava-cart
-  port: 9080
   vamp:
     gateway:
       selector:
