@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vamp-gateway-agent
+  labels:
+    io.vamp: daemon
+spec:
+  selector:
+    io.vamp: vamp-gateway-agent
+  ports:
+  - port: 80
+    protocol: TCP

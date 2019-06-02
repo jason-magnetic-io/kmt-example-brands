@@ -4,9 +4,9 @@ kind: Kustomization
 namespace: ie-production
 
 bases:
+- infrastructure/vamp
 - services/sava-product
 - services/sava-cart
 
 resources:
 - infrastructure/namespace.yaml
-- infrastructure/vamp/workflows/quantification/service-account.yaml

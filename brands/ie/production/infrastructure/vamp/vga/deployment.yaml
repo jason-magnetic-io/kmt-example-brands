@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: vamp-gateway-agent
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+      - name: vamp-gateway-agent
+        image: magneticio/vamp-gateway-agent:1.1.1
+        ports:
+        - name: p80
+          containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: vamp-gateway-agent
+        - configMapRef:
+            name: vault
+        - configMapRef:
+            name: elsticsearch
+        resources:
+          requests:
+            cpu: 0.25
+            memory: 512Mi
+          limits:
+            cpu: 1
+            memory: 2048Mi
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: "vamp.io"
+                operator: In
+                values:
+                - vamp-gateway-agent
+            topologyKey: "kubernetes.io/hostname"
