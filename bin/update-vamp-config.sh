@@ -17,7 +17,7 @@ export ENVSUBST_SHELL_FORMAT=\$VAMP_FORKLIFT_MYSQL_USER,\$VAMP_FORKLIFT_MYSQL_PA
 
 cd $BASE_PATH
 
-cp forklift/config.yaml ~/.forklift
+cp common/forklift/config.yaml ~/.forklift
 
 mkdir -p tmp
 rm -rf tmp/*
