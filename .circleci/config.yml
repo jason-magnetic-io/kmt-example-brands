@@ -16,7 +16,7 @@ jobs:
             - "92:ca:b9:9d:2b:a6:14:3e:f5:45:4c:bb:d9:cf:04:ed"
             - "62:c1:24:8f:af:ce:8c:b8:d7:97:72:34:46:b9:44:c2"
       - run:
-          name: Connect to clusters
+          name: Connect to service clusters
           command: |
             gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME1 --region $GOOGLE_CLUSTER_REGION1
             context=gke_${GOOGLE_PROJECT_ID}_${GOOGLE_CLUSTER_REGION1}_${GOOGLE_CLUSTER_NAME1}
@@ -35,6 +35,7 @@ jobs:
               git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
             
               chmod +x bin/update.sh          
+              chmod +x bin/update-vamp-config.sh          
               bin/update.sh
             
               git add .
@@ -49,6 +50,16 @@ jobs:
               fi
             else
               echo "Nothing to update. Skipping."
+            fi
+      - run:
+          name: Update vamp
+          command: |
+            if [ -e update-vamp ]
+            then
+              gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME0 --region $GOOGLE_CLUSTER_REGION0
+              kubectl --namespace ${VAMP_MANAGEMENT_NAMESPACE} delete pods -l app=vamp
+              kubectl --namespace ${VAMP_MANAGEMENT_NAMESPACE} rollout status deployment.v1beta1.apps/vamp
+              rm update-vamp
             fi
 
      
