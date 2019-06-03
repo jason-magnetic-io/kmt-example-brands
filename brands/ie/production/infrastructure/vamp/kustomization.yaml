@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-- vga
+- components/gateway-agent
 
 resources:
 - workflows/quantification/service-account.yaml
@@ -10,11 +10,8 @@ resources:
 #secretGenerator:
 configMapGenerator:
 - name: vault
-  files:
-  - common/amsterdam/vault.env
+  env: common/clusters/amsterdam/vault.env
 - name: elsticsearch
-  files:
-  - common/amsterdam/elasticsearch.env
+  env: common/clusters/amsterdam/elasticsearch.env
 - name: nats
-  files:
-  - common/amsterdam/nats.env
+  env: common/clusters/amsterdam/nats.env

@@ -12,8 +12,3 @@ images:
 - name: magneticio/vamp-gateway-agent
   newTag: 1.1.1
 
-#secretGenerator:
-configMapGenerator:
-- name: vamp-gateway-agent
-  files:
-  - vga.env
