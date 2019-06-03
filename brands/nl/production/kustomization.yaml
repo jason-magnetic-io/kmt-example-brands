@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: nl-production
 
 bases:
+- infrastructure/vamp
 - services/sava-product
 - services/sava-cart
 
