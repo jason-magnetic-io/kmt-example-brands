@@ -1,0 +1,44 @@
+vamp:
+  persistence:
+    database:
+      sql:
+        database: vamp-${namespace}
+        url: jdbc:mysql://${VAMP_FORKLIFT_MYSQL_HOST}/vamp-${namespace}
+        database-server-url: jdbc:mysql://${VAMP_FORKLIFT_MYSQL_HOST}
+        user: ${VAMP_FORKLIFT_MYSQL_USER}
+        table: ${namespace}
+        password: ${VAMP_FORKLIFT_MYSQL_PASSWORD}
+      type: mysql
+    key-value-store:
+      vault:
+        url: ${env://VAMP_PERSISTENCE_KEY_VALUE_STORE_VAULT_URL}
+        token: ${env://VAMP_PERSISTENCE_KEY_VALUE_STORE_VAULT_TOKEN}
+      base-path: /secret/vamp/${namespace}
+      type: vault
+    transformers:
+      classes: []
+  model:
+    resolvers:
+      namespace:
+      - io.vamp.ee.model.NamespaceValueResolver
+  security:
+    lookup-hash-salt: b9a277bb-59a5-43d1-9c27-8a72e7e27685
+    lookup-hash-algorithm: SHA-1
+    session-id-length: 24
+    password-hash-algorithm: SHA-512
+    password-hash-salt: d4f22852-e281-428f-8968-1265b1c5a1b0
+    token-value-length: 24
+  pulse:
+    type: nats
+    nats:
+      url: nats://nss.amsterdam.kmt-example.vamp.cloud:4222
+      cluster-id: vamp-streaming-cluster-amsterdam
+      client-id: vamp-backend
+      token: XZek-mIYz-Fptm-d2L1-vAms
+    elasticsearch:
+      index:
+        name: vamp-pulse-${namespace}
+      url: http://es.amsterdam.kmt-example.vamp.cloud:9200
+  metadata:
+    namespace:
+      title: pt

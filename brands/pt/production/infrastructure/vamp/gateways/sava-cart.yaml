@@ -1,3 +1,0 @@
-name: sava-cart
-port: 9080
-selector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(PT) 
