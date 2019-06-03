@@ -1,23 +1,31 @@
 #!/usr/bin/env bash
 set -e
 
-while getopts p:o:e: option
+while getopts p:o:e:f: option
 do
 	case "${option}"
 	in
 	  p) BASE_PATH=${OPTARG};;
 		o) ORG=${OPTARG};;
 		e) ENV=${OPTARG};;
+		f) FLAG_FILE=${OPTARG};;
 	esac
 done
+
+diff=$(git diff @^ @ -- $BASE_PATH/config)
+if [ -z "$diff" ]
+then
+  echo "Vamp config is unchanged"
+  exit 0
+fi
 
 # set envsubst variable list
 export ENVSUBST_SHELL_FORMAT=\$VAMP_FORKLIFT_MYSQL_USER,\$VAMP_FORKLIFT_MYSQL_PASSWORD,\
 \$VAMP_FORKLIFT_MYSQL_HOST,\$VAMP_FORKLIFT_SECURITY_LOOKUP_HASH_SALT,\$VAMP_FORKLIFT_SECURITY_PASSWORD_HASH_SALT
 
-cd $BASE_PATH
+cp ${BASE_PATH}/common/forklift/config.yaml ~/.forklift
 
-cp ../common/forklift/config.yaml ~/.forklift
+cd $BASE_PATH/config
 
 mkdir -p tmp
 rm -rf tmp/*
@@ -50,5 +58,7 @@ do
   forklift add artifact $workflow --organization $ORG --environment $ENV --file workflows/$workflow/breed.yaml
   forklift add artifact $workflow --organization $ORG --environment $ENV --file workflows/$workflow/workflow.yaml
 done
+
+echo "true" > $FLAG_FILE
 
 #forklift create user org-admin --role admin --organization org

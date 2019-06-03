@@ -4,6 +4,8 @@ set -e
 
 if [ -e updated ]
 then
+  vamp_flag_file=$(pwd)/vamp-updated
+
 	for brand in $(ls brands)
 	do
 		for config in $(ls brands/$brand/*.yaml)
@@ -15,7 +17,11 @@ then
 			
 			cp -r common brands/$brand/$environment/infrastructure/vamp
 			
-			bin/update-vamp-config.sh -p brands/$brand/$environment/infrastructure/vamp -o $brand -e $environment
+			bin/update-vamp-config.sh \
+			  -p brands/$brand/$environment/infrastructure/vamp \
+			  -o $brand \
+			  -e $environment \
+			  -f $vamp_flag_file
 
 			vamp-kmt \
 			  --service-defs kmt-example-service-catalog \
