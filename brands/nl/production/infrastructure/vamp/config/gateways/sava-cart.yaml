@@ -1,3 +1,2 @@
 name: sava-cart
-port: 9080
-selector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(NL) 
+kind: gatewaysdeployed: falseselector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(NL) 
