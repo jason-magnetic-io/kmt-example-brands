@@ -5,7 +5,7 @@ bases:
 - components/gateway-agent
 
 resources:
-- workflows/quantification/service-account.yaml
+- components/quantification/service-account.yaml
 
 #secretGenerator:
 configMapGenerator:
