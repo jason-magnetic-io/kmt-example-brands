@@ -13,6 +13,8 @@ then
 
 			echo "Updating $brand $environment"
 			
+			cp -r common brands/$brand/$environment/infrastructure/vamp
+			
 			bin/update-vamp-config.sh -p brands/$brand/$environment/infrastructure/vamp -o $brand -e $environment
 
 			vamp-kmt \
