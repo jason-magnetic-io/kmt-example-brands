@@ -41,4 +41,4 @@ vamp:
       url: http://es.amsterdam.kmt-example.vamp.cloud:9200
   metadata:
     namespace:
-      title: ie-production
+      title: ie
