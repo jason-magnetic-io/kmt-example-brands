@@ -33,6 +33,8 @@ jobs:
               sudo pip install -r bin/requirements.txt
           
               git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-service-catalog.git
+              
+              git clone https://github.com/$CIRCLE_PROJECT_USERNAME/kmt-example-applications.git
             
               chmod +x bin/update.sh          
               chmod +x bin/update-vamp-config.sh          
