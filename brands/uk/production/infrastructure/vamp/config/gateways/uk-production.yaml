@@ -9,7 +9,6 @@ routes:
     condition:
       condition: path_beg -i /cart/
     condition_strength: 100%
-    rewrites: []
     targets:
     - name: sava-cart
   sava-product:
