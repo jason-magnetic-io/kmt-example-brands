@@ -1,2 +1,6 @@
 name: sava-cart
-kind: gatewaysdeployed: falseselector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(PT) 
+kind: gateways
+deployed: false
+selector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(PT) 
+metadata:
+  release.vamp.io/policy: basic

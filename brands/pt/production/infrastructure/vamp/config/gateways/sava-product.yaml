@@ -1,2 +1,6 @@
 name: sava-product
-kind: gatewaysdeployed: falseselector: label(app)(sava-product) && label(version)((.*)) 
+kind: gateways
+deployed: false
+selector: label(app)(sava-product) && label(version)((.*)) 
+metadata:
+  release.vamp.io/policy: basic
