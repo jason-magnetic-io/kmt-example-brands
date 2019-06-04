@@ -48,12 +48,12 @@ jobs:
       - run:
           name: Update Vamp
           command: |
-            if [ -e update-vamp ]
+            if [ -e vamp-updated ]
             then
               gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME0 --region $GOOGLE_CLUSTER_REGION0
               kubectl --namespace ${VAMP_MANAGEMENT_NAMESPACE} delete pods -l app=vamp
               kubectl --namespace ${VAMP_MANAGEMENT_NAMESPACE} rollout status deployment.v1beta1.apps/vamp
-              rm update-vamp
+              rm vamp-updated
             fi
       - run:
           name: Commit updates
