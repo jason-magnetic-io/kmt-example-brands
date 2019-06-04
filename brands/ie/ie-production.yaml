@@ -9,6 +9,7 @@ services:
 - name: sava-product
   vamp:
     gateway:
+      policy: basic
       selector:
         discriminator: version
         type: label
@@ -17,9 +18,10 @@ services:
 - name: sava-cart
   vamp:
     gateway:
+      policy: basic
       selector:
         discriminator: version
         type: label
     name: <name>
   version: ^1.0
-updated: false
+updated: true
