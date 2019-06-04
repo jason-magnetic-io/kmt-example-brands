@@ -24,6 +24,9 @@ jobs:
             kubectl config set-context nl-production --cluster=$context --user=$context
             kubectl config set-context pt-production --cluster=$context --user=$context
             kubectl config set-context se-production --cluster=$context --user=$context
+            gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME2 --region $GOOGLE_CLUSTER_REGION2
+            context=gke_${GOOGLE_PROJECT_ID}_${GOOGLE_CLUSTER_REGION2}_${GOOGLE_CLUSTER_NAME2}
+            kubectl config set-context uk-production --cluster=$context --user=$context
             kubectl config get-contexts
       - run:
           name: Update deployments
