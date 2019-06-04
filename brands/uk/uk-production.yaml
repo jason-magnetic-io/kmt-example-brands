@@ -24,4 +24,4 @@ services:
         type: label
     name: <name>
   version: ^1.0
-updated: true
+updated: false
