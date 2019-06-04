@@ -1,0 +1,2 @@
+name: sava-cart
+kind: gatewaysdeployed: falseselector: label(app)(sava-cart) && label(version)((.*)) && label(locale)(IE) 

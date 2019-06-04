@@ -1,0 +1,27 @@
+computed-services:
+- name: sava-product
+  version: 1.0.3
+- name: sava-cart
+  version: 1.0.5
+environment:
+  name: uk-production
+services:
+- name: sava-product
+  vamp:
+    gateway:
+      policy: basic
+      selector:
+        discriminator: version
+        type: label
+    name: <name>
+  version: ^1.0
+- name: sava-cart
+  vamp:
+    gateway:
+      policy: basic
+      selector:
+        discriminator: version
+        type: label
+    name: <name>
+  version: ^1.0
+updated: true

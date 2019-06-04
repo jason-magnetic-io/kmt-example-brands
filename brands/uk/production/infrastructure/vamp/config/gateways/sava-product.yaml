@@ -1,0 +1,2 @@
+name: sava-product
+kind: gatewaysdeployed: falseselector: label(app)(sava-product) && label(version)((.*)) 
