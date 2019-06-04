@@ -59,6 +59,13 @@ do
   forklift add artifact $workflow --organization $ORG --environment $ENV --file workflows/$workflow/workflow.yaml
 done
 
+for gateway_path in $(ls gateways)
+do
+  gateway=$(echo "${gateway_path}" | cut -d'.' -f1)
+  echo "Adding $gateway gateway"
+  forklift add artifact $gateway --organization $ORG --environment $ENV --file gateways/$gateway_path
+done
+
 echo "true" > $FLAG_FILE
 
 #forklift create user org-admin --role admin --organization org
