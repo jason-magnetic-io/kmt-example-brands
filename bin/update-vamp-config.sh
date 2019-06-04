@@ -23,7 +23,11 @@ fi
 export ENVSUBST_SHELL_FORMAT=\$VAMP_FORKLIFT_MYSQL_USER,\$VAMP_FORKLIFT_MYSQL_PASSWORD,\
 \$VAMP_FORKLIFT_MYSQL_HOST,\$VAMP_FORKLIFT_SECURITY_LOOKUP_HASH_SALT,\$VAMP_FORKLIFT_SECURITY_PASSWORD_HASH_SALT
 
+echo "*** ${BASE_PATH}/common/forklift/config.yaml"
+cat ${BASE_PATH}/common/forklift/config.yaml
 cp ${BASE_PATH}/common/forklift/config.yaml ~/.forklift
+echo "*** ~/.forklift/config.yaml"
+cat ~/.forklift/config.yaml
 
 cd $BASE_PATH/config
 
