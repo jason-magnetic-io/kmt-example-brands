@@ -1,6 +1,6 @@
 computed-services:
 - name: sava-product
-  version: 1.0.3
+  version: 2.0.1
 - name: sava-cart
   version: 1.0.5
 environment:
