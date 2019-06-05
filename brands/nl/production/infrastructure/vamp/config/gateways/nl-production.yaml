@@ -1,8 +1,8 @@
-name: uk-production
+name: nl-production
 kind: gateways
 deployed: false
 virtual_hosts:
-- uk.kmt-example.vamp.cloud
+- nl.kmt-example.vamp.cloud
 routes:
   sava-cart:
     weight: 100%
@@ -14,4 +14,4 @@ routes:
       condition: path_beg -i /products/
     condition_strength: 100%
     targets:
-    - name: sava-product
+    - name: sava-product 

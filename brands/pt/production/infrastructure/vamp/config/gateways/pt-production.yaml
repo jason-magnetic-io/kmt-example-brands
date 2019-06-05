@@ -1,8 +1,8 @@
-name: uk-production
+name: pt-production
 kind: gateways
 deployed: false
 virtual_hosts:
-- uk.kmt-example.vamp.cloud
+- pt.kmt-example.vamp.cloud
 routes:
   sava-cart:
     weight: 100%
