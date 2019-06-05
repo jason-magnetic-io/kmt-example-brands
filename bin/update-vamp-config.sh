@@ -12,7 +12,7 @@ do
 	esac
 done
 
-diff=$(git diff @^ @ -- $BASE_PATH/config)
+diff=$(git diff @^ -- $BASE_PATH/config)
 if [ -z "$diff" ]
 then
   echo "Vamp config is unchanged"
@@ -63,8 +63,16 @@ done
 for gateway_path in $(ls gateways)
 do
   gateway=$(echo "${gateway_path}" | cut -d'.' -f1)
-  echo "Adding $gateway gateway"
-  forklift add artifact $gateway --organization $ORG --environment $ENV --file gateways/$gateway_path
+  
+  # prevent unnecessary updates
+	diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
+  if [ -z "$diff" ]
+  then
+    echo "$gateway gateway is unchanged"
+  else
+    echo "Adding $gateway gateway"
+    forklift add artifact $gateway --organization $ORG --environment $ENV --file gateways/$gateway_path
+	fi
 done
 
 echo "true" > $FLAG_FILE
