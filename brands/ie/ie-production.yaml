@@ -1,8 +1,8 @@
 computed-services:
-- name: sava-product
-  version: 1.0.3
 - name: sava-cart
   version: 1.0.5
+- name: sava-product
+  version: 1.0.3
 environment:
   name: ie-production
 services:
