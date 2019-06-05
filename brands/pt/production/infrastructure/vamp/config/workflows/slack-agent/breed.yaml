@@ -11,7 +11,7 @@ environment_variables:
   VAMP_KEY_VALUE_STORE_TOKEN          : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-token}
   VAMP_KEY_VALUE_STORE_PATH           : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-path}
   VAMP_NSS_URL                        : nats://nats-streaming.vamp.svc.cluster.local:4222
-  VAMP_NSS_CLIENT_ID                  : ${config://vamp.namespace}-release-agent
+  VAMP_NSS_CLIENT_ID                  : ${config://vamp.namespace}-slack-agent
   VAMP_NSS_CLUSTER_ID                 : vamp-streaming-cluster-amsterdam
   VAMP_NSS_USER                       : ${config://vamp.pulse.nats.username}
   VAMP_NSS_PASSWORD                   : ${config://vamp.pulse.nats.password}
