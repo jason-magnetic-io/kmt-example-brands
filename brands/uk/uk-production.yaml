@@ -1,8 +1,8 @@
 computed-services:
-- name: sava-product
-  version: 2.0.1
 - name: sava-cart
   version: 1.0.5
+- name: sava-product
+  version: 1.0.3
 environment:
   name: uk-production
 services:
@@ -14,7 +14,7 @@ services:
         discriminator: version
         type: label
     name: <name>
-  version: ^2.0
+  version: '*'
 - name: sava-cart
   vamp:
     gateway:
@@ -23,5 +23,5 @@ services:
         discriminator: version
         type: label
     name: <name>
-  version: ^1.0
-updated: false
+  version: '*'
+updated: true

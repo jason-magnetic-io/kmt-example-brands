@@ -14,7 +14,7 @@ services:
         discriminator: version
         type: label
     name: <name>
-  version: ^1.0
+  version: '*'
 - name: sava-cart
   vamp:
     gateway:
@@ -23,5 +23,5 @@ services:
         discriminator: version
         type: label
     name: <name>
-  version: ^1.0
+  version: '*'
 updated: false
