@@ -5,6 +5,7 @@ deployable:
 ports:
   webport: 8000/http
 environment_variables:
+  MESSAGE_TITLE_PREFIX                : 'Portugal:'
   VAMP_NAMESPACE                      : ${config://vamp.namespace}
   VAMP_KEY_VALUE_STORE_TYPE           : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-type}
   VAMP_KEY_VALUE_STORE_CONNECTION     : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-connection}
@@ -19,4 +20,3 @@ environment_variables:
   VAMP_NSS_TLS_CA_CERT                : ${config://vamp.pulse.nats.ca-cert}
   VAMP_NSS_TLS_CLIENT_CERT            : ${config://vamp.pulse.nats.client-cert}
   VAMP_NSS_TLS_CLIENT_KEY             : ${config://vamp.pulse.nats.client-key}
-  VAMP_TOPIC                          : event-gateways
