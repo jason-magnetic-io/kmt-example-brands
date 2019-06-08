@@ -27,6 +27,7 @@ then
         --service-defs kmt-example-service-catalog \
         --application kmt-example-applications/$brand/$environment.yaml \
         --environment $config \
+        --release-plans release-plans \
         --output brands/$brand/$environment
 
       updated_flag=true
