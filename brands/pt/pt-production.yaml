@@ -1,8 +1,8 @@
 computed-services:
 - name: sava-cart
-  version: 2.0.4
+  version: 1.0.5
 - name: sava-product
-  version: 2.0.1
+  version: 1.0.3
 environment:
   name: pt-production
 services:
@@ -24,4 +24,4 @@ services:
         type: label
     name: <name>
   version: '*'
-updated: true
+updated: false
