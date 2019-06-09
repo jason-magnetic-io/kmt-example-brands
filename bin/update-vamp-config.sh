@@ -12,7 +12,8 @@ do
 	esac
 done
 
-diff=$(git diff @^ -- $BASE_PATH/config)
+#diff=$(git diff @^ -- $BASE_PATH/config)
+diff="@@"
 if [ -z "$diff" ]
 then
   echo "Vamp config is unchanged"
