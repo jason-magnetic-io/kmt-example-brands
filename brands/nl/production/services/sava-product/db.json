@@ -1,0 +1,36 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"title": "Solaris PFGU03 GC 58/14",
+			"description": "",
+			"price": "39,20",
+			"locale": "nl",
+			"img": "https://images.pearle.nl/pearle/solaris-zonnebrillen-randbril-metaal-grijs?set=sku[10274749]&call=url[file:pnlseo1]"
+		},
+		{
+			"id": 2,
+			"title": "Polaroid PLD 7018/S 807 68/09",
+			"description": "",
+			"price": "47,20",
+			"locale": "nl",
+			"img": "https://images.pearle.nl/pearle/polaroid-zonnebrillen-semi-randloos-kunststof-zwart?set=sku[10262953]&call=url[file:pnlseo1]"
+		}
+		{
+			"id": 3,
+			"title": "In Style EM04WC HD 51/21",
+			"description": "",
+			"price": "55,20",
+			"locale": "nl",
+			"img": "https://images.pearle.nl/pearle/in-style-zonnebrillen-randbril-kunststof-bruin?set=sku[10246391]&call=url[file:pnlseo1]"
+		},
+		{
+			"id": 4,
+			"title": "Ray-Ban 4171 622/8G 54/18",
+			"description": "",
+			"price": "103,20",
+			"locale": "nl",
+			"img": "https://images.pearle.nl/pearle/ray-ban-zonnebrillen-randbril-tr90---nylon-zwart?set=sku[35008655]&call=url[file:pnlseo1]"
+		}
+	]
+}

@@ -23,3 +23,11 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
+        volumeMounts:
+        - name: db
+          mountPath: /data
+          readOnly: true
+      volumes:
+      - name: db
+        secret:
+          secretName: sava-product-data
