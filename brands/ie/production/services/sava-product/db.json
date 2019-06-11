@@ -1,0 +1,36 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"title": "C-Line EF22",
+			"description": "",
+			"price": 55,
+			"locale": "ie",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10227811_3Q-2x.jpg"
+		},
+		{
+			"id": 2,
+			"title": "Superdry Haylee 161",
+			"description": "",
+			"price": 75,
+			"locale": "ie",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439532_3Q-2x.jpg"
+		},
+		{
+			"id": 3,
+			"title": "Longchamp LO106S",
+			"description": "",
+			"price": 185,
+			"locale": "ie",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439596_3Q-2x.jpg"
+		},
+		{
+			"id": 4,
+			"title": "Hugo Boss 0475/S",
+			"description": "",
+			"price": 199,
+			"locale": "ie",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10108787_3Q-2x.jpg"
+		}
+	]
+}
