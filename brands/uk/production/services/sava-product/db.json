@@ -1,0 +1,36 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"title": "Dunlop 36",
+			"description": "",
+			"price": 45,
+			"locale": "uk",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439196_3Q-2x.jpg"
+		},
+		{
+			"id": 2,
+			"title": "Lipsy 501",
+			"description": "",
+			"price": 59,
+			"locale": "uk",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439780_3Q-2x.jpg"
+		},
+		{
+			"id": 3,
+			"title": "Barbour BS071",
+			"description": "",
+			"price": 75,
+			"locale": "uk",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439588_3Q-2x.jpg"
+		},
+		{
+			"id": 4,
+			"title": "Tommy Hilfiger TH1664/S",
+			"description": "",
+			"price": 89,
+			"locale": "uk",
+			"img": "https://www.visionexpress.com/images/products/sunglasses/jpg/180/10439895_3Q-2x.jpg"
+		}
+	]
+}
