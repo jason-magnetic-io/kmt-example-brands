@@ -3,4 +3,4 @@ kind: gateways
 deployed: false
 selector: label(app)(sava-cart) && label(version)((.*)) 
 metadata:
-  release.vamp.io/policy: basic
+  release.vamp.io/policy: savapcartbasic

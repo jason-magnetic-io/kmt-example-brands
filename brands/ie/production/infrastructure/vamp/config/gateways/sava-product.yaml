@@ -3,4 +3,4 @@ kind: gateways
 deployed: false
 selector: label(app)(sava-product) && label(version)((.*)) 
 metadata:
-  release.vamp.io/policy: basic
+  release.vamp.io/policy: savaproductbasic
