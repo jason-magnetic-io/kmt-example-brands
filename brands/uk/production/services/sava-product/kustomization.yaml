@@ -17,7 +17,7 @@ commonLabels:
 images:
 - name: vampio/sava-product
   newTag: 1.0.3
-    
+  
 secretGenerator:
 - name: sava-product-data
   behavior: create
