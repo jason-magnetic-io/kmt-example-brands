@@ -1,0 +1,108 @@
+{
+  "name": "savacartbasic",
+  "version": 0,
+  "gracePeriod": "5m0s",
+  "steps": [
+    {
+      "source": {
+        "weight": 100,
+        "condition": "",
+        "conditionStrength": 0
+      },
+      "target": {
+        "weight": 0,
+        "condition": "user-agent = iPhone",
+        "conditionStrength": 100
+      },
+      "duration": "3m0s"
+    },
+    {
+      "source": {
+        "weight": 50,
+        "condition": "",
+        "conditionStrength": 0
+      },
+      "target": {
+        "weight": 50,
+        "condition": "",
+        "conditionStrength": 0
+      },
+      "duration": "3m0s"
+    },
+    {
+      "source": {
+        "weight": 0,
+        "condition": "",
+        "conditionStrength": 0
+      },
+      "target": {
+        "weight": 100,
+        "condition": "",
+        "conditionStrength": 0
+      },
+      "duration": "3m0s"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "health",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-health-*",
+        "tags": [
+          "health",
+          "deployments:{gateway}",
+          "routes:({target_route})"
+        ]
+      }
+    },
+    {
+      "name": "availableReplicas",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-allocation-*",
+        "tags": [
+          "allocation",
+          "gateway:{gateway}",
+          "version:{target_route}"
+        ],
+        "field": "allocation.kubernetes.replicas.available"
+      }
+    }
+  ],
+  "baselines": [
+    {
+      "name": "health",
+      "metric": "health",
+      "value": 0.97
+    },
+    {
+      "name": "minReplicas",
+      "metric": "availableReplicas",
+      "value": 1
+    }
+  ],
+  "conditions": [
+    {
+      "value": "health >= baselines.health",
+      "gracePeriod": "1m0s"
+    },
+    {
+      "value": "availableReplicas >= baselines.minReplicas",
+      "gracePeriod": "1m0s"
+    }
+  ],
+  "onSuccess": [
+    {
+      "type": "http",
+      "value": {
+        "url": "https://circleci.com/api/v1.1/roject/github/jason-magnetic-io/kmt-example-release-jobs",
+        "user": "8e95a2ba50255c4886fc97e2f7f55ffa2cfec4f7",
+        "httpRequest": "GET",
+        "data": [
+          "build_parameters[CIRCLE_JOB]=update-rp-sava-cart-204-pt-prod"
+        ]
+      }
+    }
+  ]
+}
