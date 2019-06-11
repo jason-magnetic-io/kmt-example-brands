@@ -61,6 +61,10 @@ do
   forklift add artifact $workflow --organization $ORG --environment $ENV --file workflows/$workflow/workflow.yaml
 done
 
+# Fix this once VE-731 allows names with dashes
+forklift add releasepolicy savaproductbasic environment $ENV --organization $ORG --file policies/$ORG-basic-sava-product.json
+forklift add releasepolicy savacartbasic environment $ENV --organization $ORG --file policies/$ORG-basic-sava-cart.json
+
 for gateway_path in $(ls gateways)
 do
   gateway=$(echo "${gateway_path}" | cut -d'.' -f1)
