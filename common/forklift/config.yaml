@@ -4,3 +4,4 @@ database-name: vamp-${namespace}
 database-table: ${namespace}
 key-value-store-type: vault
 key-value-store-base-path: /secret/vamp/${namespace}
+release-policies-path: workflows/release-agent/policies

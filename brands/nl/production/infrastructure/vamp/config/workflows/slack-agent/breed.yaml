@@ -1,11 +1,11 @@
 name: slack-agent
 kind: breeds
 deployable:
-  definition: magneticio/vamp-slack-agent:0.6.0-ve647-3
+  definition: magneticio/vamp-slack-agent:0.6.0-ve647-5
 ports:
   webport: 8000/http
 environment_variables:
-  MESSAGE_TITLE_PREFIX                : 'Nederlands:'
+  MESSAGE_TITLE                       : 'Nederlands'
   VAMP_NAMESPACE                      : ${config://vamp.namespace}
   VAMP_KEY_VALUE_STORE_TYPE           : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-type}
   VAMP_KEY_VALUE_STORE_CONNECTION     : ${config://vamp.workflow-driver.workflow.vamp-key-value-store-connection}
