@@ -79,6 +79,6 @@ do
 	fi
 done
 
-echo "true" > $FLAG_FILE
+date > $FLAG_FILE
 
 #forklift create user org-admin --role admin --organization org
