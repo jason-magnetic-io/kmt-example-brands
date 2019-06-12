@@ -12,7 +12,8 @@ do
 	esac
 done
 
-diff=$(git diff @^ -- $BASE_PATH/config)
+#diff=$(git diff @^ -- $BASE_PATH/config)
+#diff="@@"
 if [ -z "$diff" ]
 then
   echo "Vamp config is unchanged"
@@ -69,7 +70,8 @@ do
   gateway=$(echo "${gateway_path}" | cut -d'.' -f1)
   
   # prevent unnecessary updates
-	diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
+	#diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
+	diff="@@"
   if [ -z "$diff" ]
   then
     echo "$gateway gateway is unchanged"
