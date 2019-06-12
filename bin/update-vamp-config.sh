@@ -13,7 +13,7 @@ do
 done
 
 #diff=$(git diff @^ -- $BASE_PATH/config)
-#diff="@@"
+diff="@@"
 if [ -z "$diff" ]
 then
   echo "Vamp config is unchanged"
