@@ -2,9 +2,9 @@
 
 set -e
 
-if [ -e updated ]
+if [ -f ./updated ] || compgen -G "./configure-*" > /dev/null
 then
-  vamp_flag_file=$(pwd)/vamp-updated
+  vamp_flag_file_path=$(pwd)
 
   for brand in $(ls brands)
   do
@@ -21,7 +21,7 @@ then
         -p brands/$brand/$environment/infrastructure/vamp \
         -o $brand \
         -e $environment \
-        -f $vamp_flag_file
+        -f $vamp_flag_file_path
 
       vamp-kmt \
         --service-defs kmt-example-service-catalog \
@@ -43,7 +43,8 @@ then
       fi
     done
   done
-  rm updated
+  [ ! -f ./updated ] || rm ./updated
+  [ ! -f ./updated ] || rm ./configure-vamp
 else
   echo "Nothing to update"
 fi

@@ -8,12 +8,13 @@ do
 	  p) BASE_PATH=${OPTARG};;
 		o) ORG=${OPTARG};;
 		e) ENV=${OPTARG};;
-		f) FLAG_FILE=${OPTARG};;
+		f) FLAG_FILE_PATH=${OPTARG};;
 	esac
 done
 
 diff=$(git diff @^ -- $BASE_PATH/config)
-if [ -z "$diff" ]
+if [ -z "$diff" ] && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ] \
+  && [ ! -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
 then
   echo "Vamp config is unchanged"
   exit 0
@@ -31,10 +32,12 @@ cd $BASE_PATH/config
 mkdir -p tmp
 rm -rf tmp/*
 
+created="false"
 echo "Creating Vamp config for $ORG $ENV"
 if [ "$(forklift list organizations | grep $ORG)" == "" ]
 then
   echo "Creating $ORG"
+  created="true"
 	envsubst ${ENVSUBST_SHELL_FORMAT} < organization.yaml > tmp/organization.yaml
 	forklift create organization $ORG --file tmp/organization.yaml
 else
@@ -45,6 +48,7 @@ fi
 if [ "$(forklift list environments --organization $ORG | grep $ENV)" == "" ]
 then
   echo "Creating $ENV"
+  created="true"
   envsubst ${ENVSUBST_SHELL_FORMAT} < environment.yaml > tmp/environment.yaml
   forklift create environment $ENV --organization $ORG --file tmp/environment.yaml
 else
@@ -70,7 +74,7 @@ do
   
   # prevent unnecessary updates
 	diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
-  if [ -z "$diff" ]
+  if [ ! "$created" = "true" ] || [ -z "$diff" ]
   then
     echo "$gateway gateway is unchanged"
   else
@@ -79,6 +83,6 @@ do
 	fi
 done
 
-date > $FLAG_FILE
+date > ${FLAG_FILE_PATH}/vamp-updated
 
 #forklift create user org-admin --role admin --organization org

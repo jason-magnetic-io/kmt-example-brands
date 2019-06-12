@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Update deployments
           command: |
-            if [ -e updated ]
+            if [ -f ./updated ]
             then
               sudo pip install -r bin/requirements.txt
           
@@ -48,7 +48,7 @@ jobs:
       - run:
           name: Update Vamp
           command: |
-            if [ -e vamp-updated ]
+            if [ -f ./vamp-updated ]
             then
               gcloud --quiet container clusters get-credentials $GOOGLE_CLUSTER_NAME0 --region $GOOGLE_CLUSTER_REGION0
               kubectl --namespace ${VAMP_MANAGEMENT_NAMESPACE} delete pods -l app=vamp
