@@ -98,7 +98,7 @@
       "value": {
         "url": "https://circleci.com/api/v1.1/project/github/jason-magnetic-io/kmt-example-release-jobs",
         "user": "8e95a2ba50255c4886fc97e2f7f55ffa2cfec4f7",
-        "httpRequest": "GET",
+        "httpRequest": "POST",
         "data": [
           "build_parameters[CIRCLE_JOB]=update-rp-sava-product-201-pt-prod"
         ]
