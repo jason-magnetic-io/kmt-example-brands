@@ -74,7 +74,7 @@ do
   
   # prevent unnecessary updates
 	diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
-  if [ ! "$created" = "true" ] || [ -z "$diff" ]
+  if [ ! "$created" = "true" ] && [ -z "$diff" ] && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ]
   then
     echo "$gateway gateway is unchanged"
   else

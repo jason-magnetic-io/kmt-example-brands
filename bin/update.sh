@@ -17,18 +17,18 @@ then
       
       cp -r common brands/$brand/$environment/infrastructure/vamp
       
-      bin/update-vamp-config.sh \
-        -p brands/$brand/$environment/infrastructure/vamp \
-        -o $brand \
-        -e $environment \
-        -f $vamp_flag_file_path
-
       vamp-kmt \
         --service-defs kmt-example-service-catalog \
         --application kmt-example-applications/$brand/$environment.yaml \
         --environment $config \
         --release-plans release-plans \
         --output brands/$brand/$environment
+
+      bin/update-vamp-config.sh \
+        -p brands/$brand/$environment/infrastructure/vamp \
+        -o $brand \
+        -e $environment \
+        -f $vamp_flag_file_path
 
       updated_flag=true
       python3 bin/copy_services.py \
@@ -44,7 +44,7 @@ then
     done
   done
   [ ! -f ./updated ] || rm ./updated
-  [ ! -f ./updated ] || rm ./configure-vamp
+  [ ! -f ./configure-vamp ] || rm ./configure-vamp
 else
   echo "Nothing to update"
 fi
