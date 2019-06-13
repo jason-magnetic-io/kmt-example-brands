@@ -1,3 +1,5 @@
+.DS_Store
+
 bin/Pipfile*
 
 *service-catalog/

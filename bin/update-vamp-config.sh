@@ -12,7 +12,7 @@ do
 	esac
 done
 
-diff=$(git diff @^ -- $BASE_PATH/config)
+diff="$(git diff @^ -- $BASE_PATH/config)$(git status -s $BASE_PATH/config)"
 if [ -z "$diff" ] && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ] \
   && [ ! -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
 then
@@ -73,8 +73,11 @@ do
   gateway=$(echo "${gateway_path}" | cut -d'.' -f1)
   
   # prevent unnecessary updates
-	diff="$(git diff -- ${gateway_path}) $(git diff @^ -- ${gateway_path})"
-  if [ ! "$created" = "true" ] && [ -z "$diff" ] && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ]
+	diff="$(git diff @^ -- ${gateway_path})$(git diff -- ${gateway_path})$(git status -s ${gateway_path})"
+  if [ -z "$diff" ] \
+    && [ ! "$created" = "true" ]\
+    && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ] \
+    && [ ! -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
   then
     echo "$gateway gateway is unchanged"
   else
