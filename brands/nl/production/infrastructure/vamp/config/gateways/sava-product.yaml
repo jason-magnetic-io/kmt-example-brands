@@ -1,7 +1,7 @@
 name: sava-product
 kind: gateways
 deployed: false
-port: 40001
+port: 9070
 selector: label(app)(sava-product) && label(version)((.*)) 
 metadata:
   release.vamp.io/policy: savaproductbasic
