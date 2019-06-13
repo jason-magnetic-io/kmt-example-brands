@@ -7,6 +7,7 @@ environment:
   name: uk-production
 services:
 - name: sava-product
+  port: 40001
   vamp:
     gateway:
       policy: savaproductbasic
@@ -16,6 +17,7 @@ services:
     name: <name>
   version: '*'
 - name: sava-cart
+  port: 40002
   vamp:
     gateway:
       policy: savacartbasic
