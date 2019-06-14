@@ -31,7 +31,7 @@ jobs:
       - run:
           name: Update deployments
           command: |
-            if [ -f ./updated ]
+            if [ -f ./updated ] || [ -f ./configure-vamp ]
             then
               sudo pip install -r bin/requirements.txt
           
