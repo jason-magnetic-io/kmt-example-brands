@@ -1,7 +1,7 @@
 name: slack-agent
 kind: breeds
 deployable:
-  definition: magneticio/vamp-slack-agent:0.6.0-ve647-6
+  definition: magneticio/vamp-slack-agent:latest
 ports:
   webport: 8000/http
 environment_variables:
