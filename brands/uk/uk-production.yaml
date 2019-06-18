@@ -10,7 +10,7 @@ services:
   port: 9070
   vamp:
     gateway:
-      policy: savaproductbasic
+      policy: sava-product-basic
       selector:
         discriminator: version
         type: label
@@ -19,7 +19,7 @@ services:
 - name: sava-cart
   vamp:
     gateway:
-      policy: savacartbasic
+      policy: sava-cart-basic
       selector:
         discriminator: version
         type: label

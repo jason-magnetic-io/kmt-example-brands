@@ -65,8 +65,8 @@ do
 done
 
 # Fix this once VE-731 allows names with dashes
-forklift add releasepolicy savaproductbasic --environment $ENV --organization $ORG --file policies/$ORG-basic-sava-product.json
-forklift add releasepolicy savacartbasic --environment $ENV --organization $ORG --file policies/$ORG-basic-sava-cart.json
+forklift add releasepolicy sava-product-basic --environment $ENV --organization $ORG --file policies/$ORG-basic-sava-product.json
+forklift add releasepolicy sava-cart-basic --environment $ENV --organization $ORG --file policies/$ORG-basic-sava-cart.json
 
 for gateway_path in $(ls gateways)
 do

@@ -1,46 +1,44 @@
 {
-  "name": "savaproductbasic",
-  "version": 0,
-  "gracePeriod": "2m0s",
+  "name": "sava-product-basic",
+  "gracePeriod": "5m",
   "steps": [
     {
-      "source": {
-        "weight": 100,
-        "condition": "",
-        "conditionStrength": 0
-      },
+      "duration": "5m",
+      "source": { "weight": 100 },
       "target": {
         "weight": 0,
         "condition": "user-agent = iPhone",
         "conditionStrength": 100
       },
-      "duration": "3m0s"
+      "conditions": [
+        {
+          "value": "health >= baselines.health",
+          "gracePeriod": "2m"
+				},
+				{
+					"value": "availableReplicas >= baselines.minReplicas",
+					"gracePeriod": "2m"
+				}
+      ]
     },
     {
-      "source": {
-        "weight": 50,
-        "condition": "",
-        "conditionStrength": 0
-      },
-      "target": {
-        "weight": 50,
-        "condition": "",
-        "conditionStrength": 0
-      },
-      "duration": "3m0s"
+      "duration": "5m",
+      "source": { "weight": 50 },
+      "target": { "weight": 50 },
+      "conditions": [
+        {
+          "value": "health >= baselines.health",
+          "gracePeriod": "2m"
+				},
+				{
+					"value": "availableReplicas >= baselines.minReplicas",
+					"gracePeriod": "2m"
+				}
+      ]
     },
     {
-      "source": {
-        "weight": 0,
-        "condition": "",
-        "conditionStrength": 0
-      },
-      "target": {
-        "weight": 100,
-        "condition": "",
-        "conditionStrength": 0
-      },
-      "duration": "0s"
+      "source": { "weight": 0 },
+      "target": { "weight": 100 }
     }
   ],
   "metrics": [
@@ -74,22 +72,12 @@
     {
       "name": "health",
       "metric": "health",
-      "value": 0.97
+      "value": 0.95
     },
     {
       "name": "minReplicas",
       "metric": "availableReplicas",
       "value": 1
-    }
-  ],
-  "conditions": [
-    {
-      "value": "health >= baselines.health",
-      "gracePeriod": "1m0s"
-    },
-    {
-      "value": "availableReplicas >= baselines.minReplicas",
-      "gracePeriod": "1m0s"
     }
   ],
   "onSuccess": [
