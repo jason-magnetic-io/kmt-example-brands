@@ -4,7 +4,7 @@
 			"id": 1,
 			"title": "Seen GF03 PD",
 			"description": "Os óculos de sol Seen GF03 são uma solução em conta para estar protegido do sol nas suas actividades diárias. A armação rosa e dourada redonda é feita de metal, robusto e de aparência elegante. A lente azul suaviza a luz do sol de baixa intensidade e protege os olhos do vento frio do inverno. Os óculos de sol trazem lentes espelhadas, que refletem grande parte da luz, como um espelho. Ótimas para fazer desportos em condições de enorme luminosidade ou simplesmente para uma utilização na cidade para um look cheio de estilo.",
-			"price": "15,92",
+			"price": 15.92,
 			"locale": "pt",
 			"img": "https://static-grandvision.imgix.net/pt-multiopticas/81106-8719154326523-angle-01-seen-gf03-eyewear-pink-gold.png?w=200&fm=jpeg"
 		},
@@ -12,7 +12,7 @@
 			"id": 2,
 			"title": "Polaroid 6071/S/X",
 			"description": "Experiencie uma visão perfeita com total proteção UV e desenho ergonómico com Polaroid PLD 6071/S/X . Como líder mundial em tecnologia de lentes polarizadas, a Polaroid é uma dos melhores e mais fiáveis marcas de óculos de sol. A armação prateada caty eye é feita de metal, robusto e de aparência elegante. A lente cinzenta proporciona uma visão neutra e assegura que veja os objectos com a sua cor natural. Os óculos de sol trazem lentes polarizadas, para que não fique encandeado pelos reflexos desconfortáveis dos raios de sol na água ou neve.",
-			"price": "55,20",
+			"price": 55.20,
 			"locale": "pt",
 			"img": "https://static-grandvision.imgix.net/pt-multiopticas/716736135991-angle-polaroid.JPG?w=200&fm=jpeg"
 		},
@@ -20,7 +20,7 @@
 			"id": 3,
 			"title": "Julius JSGM27 HG",
 			"description": "Óculos de sol Julius JSGM27. Ouse em ser diferente, sem ultrapassar todos os limites. ",
-			"price": "79,20",
+			"price": 79.20,
 			"locale": "pt",
 			"img": "https://static-grandvision.imgix.net/pt-multiopticas/81071-8719154295560_Angle_julius.png?w=200&fm=jpeg"
 		},
@@ -28,7 +28,7 @@
 			"id": 4,
 			"title": "Ray-Ban RB3447",
 			"description": "Óculos de sol Ray-Ban ROUND METAL. Autenticidade Ray-Ban. Intemporalidade Ray-Ban. Liberdade de expressão Ray-Ban.",
-			"price": "119,20",
+			"price": 119.20,
 			"locale": "pt",
 			"img": "https://static-grandvision.imgix.net/pt-multiopticas/32841-805289439899-Angle-Ray-Ban.png?w=200&fm=jpeg"
 		}

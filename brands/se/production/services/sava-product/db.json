@@ -4,7 +4,7 @@
 			"id": 1,
 			"title": "Seen RCJM01 HN",
 			"description": "Stilren och enkel design – moderna glasögon med skydd. Nödvändiga grejer för vardagsaktiviteter. Brun pilotbåge. Bekväm, lätt plastram. För starkt solljus (UV-kategori 5)",
-			"price": "148,50",
+			"price": 148.50,
 			"locale": "se",
 			"img": "https://static-grandvision.imgix.net/se-synoptik/8719154519079_angle.png?w=200&fm=jpeg"
 		},
@@ -12,7 +12,7 @@
 			"id": 2,
 			"title": "Solaris PCFM02",
 			"description": "Solaris kombinerar skydd och nöje för barn och vuxna. Ett måste för hela familjen, en modell för varje personlighet och smak. Gråa, rektangulära bågar. Tålig och bekväm metallbåge. För starkt solljus (UV-kategori 5).",
-			"price": "298,50",
+			"price": 298.50,
 			"locale": "se",
 			"img": "https://static-grandvision.imgix.net/se-synoptik/8719154241925_angle.png?w=200&fm=jpeg"
 		},
@@ -20,7 +20,7 @@
 			"id": 3,
 			"title": "Solaris SPO 020",
 			"description": "Solaris kombinerar skydd och nöje för barn och vuxna. Ett måste för hela familjen, en modell för varje personlighet och smak. Grön, oval båge. Bekväm, lätt plastram. För starkt solljus (UV-kategori 5).",
-			"price": "298,50",
+			"price": 298.50,
 			"locale": "se",
 			"img": "https://static-grandvision.imgix.net/se-synoptik/8719154520990_angle.png?w=200&fm=jpeg"
 		},
@@ -28,7 +28,7 @@
 			"id": 4,
 			"title": "Polaroid PLD4014S",
 			"description": "Ledande inom polaroidlinsteknik. Har skyddat ögon i över 80 år. En unik kombination av teknisk prestanda och design. Guldfärgade, rektangulära bågar. Lätt och bekväm acetatbåge. För starkt solljus (UV-kategori 5).",
-			"price": "448,50",
+			"price": 448.50,
 			"locale": "se",
 			"img": "https://static-grandvision.imgix.net/se-synoptik/827886550456_angle.png?w=200&fm=jpeg"
 		}
