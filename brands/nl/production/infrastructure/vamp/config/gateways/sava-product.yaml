@@ -4,4 +4,4 @@ deployed: false
 port: 9070
 selector: label(app)(sava-product) && label(version)((.*)) 
 metadata:
-  release.vamp.io/policy: savaproductbasic
+  release.vamp.io/policy: sava-product-basic
