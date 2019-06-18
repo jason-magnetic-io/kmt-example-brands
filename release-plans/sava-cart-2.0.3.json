@@ -1,7 +1,0 @@
-{
-    "status": "failed",
-    "service": {
-        "name": "sava-cart",
-        "version": "2.0.3"
-    }
-}
