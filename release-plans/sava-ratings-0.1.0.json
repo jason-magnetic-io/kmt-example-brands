@@ -1,0 +1,7 @@
+{
+    "status": "finished",
+    "service": {
+        "name": "sava-ratings",
+        "version": "0.1.0"
+    }
+}
