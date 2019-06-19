@@ -1,0 +1,5 @@
+name: sava-ratings
+kind: gateways
+deployed: false
+port: 9080
+selector: label(app)(sava-ratings) && label(version)((.*)) 
