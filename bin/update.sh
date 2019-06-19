@@ -38,6 +38,17 @@ then
 
       if [ "$updated_flag" = true ]
       then
+  			pushd brands/$brand/$environment
+  			for service in $(ls services/)
+  			do
+      		if [ -f services/$service/kustomization.yaml ] && \
+      		   [ -z "$(cat kustomization.yaml | grep services/$service)" ]
+      		then
+        		kustomize edit add base services/$service
+      		fi
+  			done
+  			popd
+
         kubectl config use-context $context
         kustomize build brands/$brand/$environment | kubectl apply -f -
       fi

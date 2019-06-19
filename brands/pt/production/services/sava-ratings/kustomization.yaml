@@ -10,7 +10,7 @@ nameSuffix: -0.1.0
 
 ## labels to add to all resources
 commonLabels:
-  app: sava-product
+  app: sava-ratings
   version: 0.1.0
 
 ## image tag
