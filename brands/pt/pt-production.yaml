@@ -25,4 +25,13 @@ services:
         type: label
     name: <name>
   version: '*'
+- name: sava-ratings
+  port: 9080
+  vamp:
+    gateway:
+      selector:
+        discriminator: version
+        type: label
+    name: <name>
+  version: '*'
 updated: false
