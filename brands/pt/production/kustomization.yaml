@@ -7,7 +7,6 @@ bases:
 - infrastructure/vamp
 - services/sava-product
 - services/sava-cart
-- services/sava-ratings
 
 resources:
 - infrastructure/namespace.yaml
