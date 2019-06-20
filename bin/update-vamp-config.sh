@@ -41,7 +41,7 @@ then
 	envsubst ${ENVSUBST_SHELL_FORMAT} < organization.yaml > tmp/organization.yaml
 	forklift create organization $ORG --file tmp/organization.yaml
 else
-	diff="$(git diff @^ -- ${organization.yaml})$(git diff -- ${organization.yaml}))"
+	diff="$(git diff @^ -- organization.yaml)$(git diff -- organization.yaml))"
   if [ ! -z "$diff" ] \
      || [ -f "${FLAG_FILE_PATH}/configure-vamp" ] \
      || [ -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
@@ -59,7 +59,7 @@ then
   envsubst ${ENVSUBST_SHELL_FORMAT} < environment.yaml > tmp/environment.yaml
   forklift create environment $ENV --organization $ORG --file tmp/environment.yaml
 else
-	diff="$(git diff @^ -- ${environment.yaml})$(git diff -- ${environment.yaml}))"
+	diff="$(git diff @^ -- environment.yaml)$(git diff -- environment.yaml))"
   if [ ! -z "$diff" ] \
      || [ -f "${FLAG_FILE_PATH}/configure-vamp" ] \
      || [ -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
