@@ -89,7 +89,7 @@
         "user": "8e95a2ba50255c4886fc97e2f7f55ffa2cfec4f7",
         "httpRequest": "POST",
         "data": [
-          "build_parameters[CIRCLE_JOB]=update-rp-sava-cart-204-uk-prod"
+          "build_parameters[CIRCLE_JOB]=update-rp-sava-cart-205-uk-prod"
         ]
       }
     }
