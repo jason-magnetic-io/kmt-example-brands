@@ -1,0 +1,85 @@
+{
+  "name": "basic",
+  "version": 0,
+  "gracePeriod": "5m",
+  "steps": [
+    {
+      "source": {
+        "weight": 100
+      },
+      "target": {
+        "weight": 0,
+        "condition": "user-agent = iPhone",
+        "conditionStrength": 100
+      },
+      "duration": "5m"
+    },
+    {
+      "source": {
+        "weight": 50
+      },
+      "target": {
+        "weight": 50
+      },
+      "duration": "5m"
+    },
+    {
+      "source": {
+        "weight": 0,
+      },
+      "target": {
+        "weight": 100,
+      },
+      "duration": "1m"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "health",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-health-*",
+        "tags": [
+          "health",
+          "deployments:{gateway}",
+          "routes:({target_route})"
+        ]
+      }
+    },
+    {
+      "name": "availableReplicas",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-allocation-*",
+        "tags": [
+          "allocation",
+          "gateway:{gateway}",
+          "version:{target_route}"
+        ],
+        "field": "allocation.kubernetes.replicas.available"
+      }
+    }
+  ],
+  "baselines": [
+    {
+      "name": "health",
+      "metric": "health",
+      "value": 0.97
+    },
+    {
+      "name": "minReplicas",
+      "metric": "availableReplicas",
+      "value": 1
+    }
+  ],
+  "conditions": [
+    {
+      "value": "health >= baselines.health",
+      "gracePeriod": "1m"
+    },
+    {
+      "value": "availableReplicas >= baselines.minReplicas",
+      "gracePeriod": "1m"
+    }
+  ]
+}
