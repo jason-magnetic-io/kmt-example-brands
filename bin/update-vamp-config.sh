@@ -37,24 +37,38 @@ echo "Creating Vamp config for $ORG $ENV"
 if [ "$(forklift list organizations | grep $ORG)" == "" ]
 then
   echo "Creating $ORG"
-  created="true"
+  deploy_gateways="true"
 	envsubst ${ENVSUBST_SHELL_FORMAT} < organization.yaml > tmp/organization.yaml
 	forklift create organization $ORG --file tmp/organization.yaml
 else
-  echo "Updating $ORG"
-	envsubst ${ENVSUBST_SHELL_FORMAT} < organization.yaml > tmp/organization.yaml
-	forklift update organization $ORG --file tmp/organization.yaml
+	diff="$(git diff @^ -- ${organization.yaml})$(git diff -- ${organization.yaml}))"
+  if [ ! -z "$diff" ] \
+     || [ -f "${FLAG_FILE_PATH}/configure-vamp" ] \
+     || [ -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
+  then
+    echo "Updating $ORG"
+    deploy_gateways="true"
+	  envsubst ${ENVSUBST_SHELL_FORMAT} < organization.yaml > tmp/organization.yaml
+	  forklift update organization $ORG --file tmp/organization.yaml
+  fi
 fi
 if [ "$(forklift list environments --organization $ORG | grep $ENV)" == "" ]
 then
   echo "Creating $ENV"
-  created="true"
+  deploy_gateways="true"
   envsubst ${ENVSUBST_SHELL_FORMAT} < environment.yaml > tmp/environment.yaml
   forklift create environment $ENV --organization $ORG --file tmp/environment.yaml
 else
-  echo "Updating $ENV"
-  envsubst ${ENVSUBST_SHELL_FORMAT} < environment.yaml > tmp/environment.yaml
-  forklift update environment $ENV --organization $ORG --file tmp/environment.yaml
+	diff="$(git diff @^ -- ${environment.yaml})$(git diff -- ${environment.yaml}))"
+  if [ ! -z "$diff" ] \
+     || [ -f "${FLAG_FILE_PATH}/configure-vamp" ] \
+     || [ -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
+  then
+	  echo "Updating $ENV"
+  	deploy_gateways="true"
+  	envsubst ${ENVSUBST_SHELL_FORMAT} < environment.yaml > tmp/environment.yaml
+  	forklift update environment $ENV --organization $ORG --file tmp/environment.yaml
+  fi
 fi
 
 for workflow in $(ls workflows)
@@ -75,7 +89,7 @@ do
   # prevent unnecessary updates
 	diff="$(git diff @^ -- ${gateway_path})$(git diff -- ${gateway_path})$(git status -s ${gateway_path})"
   if [ -z "$diff" ] \
-    && [ ! "$created" = "true" ]\
+    && [ ! "$deploy_gateways" = "true" ]\
     && [ ! -f "${FLAG_FILE_PATH}/configure-vamp" ] \
     && [ ! -f "${FLAG_FILE_PATH}/configure-${ORG}-${ENV}" ]
   then
