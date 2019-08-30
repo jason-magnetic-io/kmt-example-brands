@@ -64,7 +64,14 @@ jobs:
                 git config user.email "${GITHUB_EMAIL}"
                 git config user.name "${CIRCLE_USERNAME}"
                 git commit -m "Updated environments"
-                git pull --rebase && git push origin master
+                git pull --rebase || pull_failed=true
+                if [ "$pull_failed" = true ] && [ -f ./updated ]
+                then
+                  date > ./updated
+                  git add ./updated
+                  git rebase --continue 
+                fi
+                git push origin master
               else
                 echo "Nothing to commit. Skipping."
               fi
