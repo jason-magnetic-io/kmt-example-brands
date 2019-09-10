@@ -6,18 +6,18 @@ resources:
 - deployment.yaml
 
 ## appended to the names of all resources
-nameSuffix: -1.0.3
+nameSuffix: -2.0.1
 
 ## labels to add to all resources
 commonLabels:
   app: sava-product
-  version: 1.0.3
+  version: 2.0.1
 
 ## image tag
 images:
 - name: vampio/sava-product
-  newTag: 1.0.3
-  
+  newTag: 2.0.1
+
 secretGenerator:
 - name: sava-product-data
   behavior: create
