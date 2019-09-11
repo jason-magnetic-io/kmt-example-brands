@@ -1,0 +1,21 @@
+{
+    "status": "not started",
+    "service": {
+        "name": "sava-cart",
+        "version": "2.1.1"
+    },
+    "releaseGroups": [
+        {
+            "group": 1,
+            "name": "",
+            "canStart": true,
+            "status": "not started",
+            "environments": [
+                {
+                    "name": "pt-production",
+                    "status": "not started"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+  "name": "demo",
+  "steps": [
+    {
+      "source": {
+        "weight": 100
+      },
+      "target": {
+        "weight": 0,
+        "condition": "user-agent = iPhone",
+        "conditionStrength": 100
+      },
+      "endAfter": {
+        "value": "totalRequests >= 50.00",
+        "maxDuration": "5m0s"
+      },
+      "conditions": [
+        {
+          "value": "health >= 0.90",
+          "gracePeriod": "2m0s"
+        },
+        {
+          "value": "avgBasketValue > 50.00",
+          "gracePeriod": "5m0s"
+        }
+      ]
+    },
+    {
+      "source": {
+        "weight": 50
+      },
+      "target": {
+        "weight": 50
+      },
+      "endAfter": {
+        "value": "totalRequests >= 50.00",
+        "maxDuration": "5m0s"
+      },
+      "conditions": [
+        {
+          "value": "health >= 0.90",
+          "gracePeriod": "2m0s"
+        },
+        {
+          "value": "avgBasketValue > 50.00",
+          "gracePeriod": "5m0s"
+        }
+      ]
+    },
+    {
+      "source": {
+        "weight": 0
+      },
+      "target": {
+        "weight": 100
+      },
+      "endAfter": {
+        "value": "totalRequests >= 50.00",
+        "maxDuration": "5m0s"
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "name": "health",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-fakemetrics-*",
+        "tags": [
+          "gateway:sava-cart",
+          "version:2.1.0"
+        ]
+      }
+    },
+    {
+      "name": "totalRequests",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-fakemetrics-*",
+        "tags": [
+          "gateway:sava-cart",
+          "version:2.1.0"
+        ],
+        "field": "totalRequests"
+      }
+    },
+    {
+      "name": "avgBasketValue",
+      "value": {
+        "source": "es",
+        "index": "vamp-pulse-{namespace}-fakemetrics-*",
+        "tags": [
+          "gateway:sava-cart",
+          "version:2.1.0"
+        ],
+        "field": "avgBasketValue"
+      }
+    }
+  ]
+}
