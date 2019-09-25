@@ -5,20 +5,15 @@ kind: Kustomization
 resources:
 - deployment.yaml
 
-## appended to the names of all resources
-nameSuffix: -2.1.1
-
 ## labels to add to all resources
 commonLabels:
   app: sava-cart
-  version: 2.1.1
 
-## image tag
-images:
-- name: vampio/sava-cart
-  newTag: 2.1.1
-  
 configMapGenerator:
 - behavior: create
   env: configMap.env
   name: sava-cart-configmap
+images:
+- name: vampio/sava-cart
+  newTag: 2.1.2
+nameSuffix: -2.1.2
