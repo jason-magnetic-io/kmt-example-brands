@@ -6,7 +6,7 @@ resources:
 - deployment.yaml
 
 ## appended to the names of all resources
-nameSuffix: -v2.1.1
+nameSuffix: -2.1.1
 
 ## labels to add to all resources
 commonLabels:
