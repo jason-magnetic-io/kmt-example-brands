@@ -1,8 +1,12 @@
 computed-services:
 - name: sava-cart
-  version: 1.0.6
+  version: 2.0.8
 - name: sava-product
-  version: 1.0.3
+  version: 2.0.1
+- name: sava-order
+  version: 0.1.1
+- name: sava-stock
+  version: 0.1.1
 environment:
   name: pt-production
 services:
