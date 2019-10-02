@@ -1,0 +1,53 @@
+{
+    "status": "failed",
+    "service": {
+        "name": "sava-cart",
+        "version": "2.0.7"
+    },
+    "releaseGroups": [
+        {
+            "group": 1,
+            "name": "",
+            "canStart": false,
+            "status": "failed",
+            "environments": [
+                {
+                    "name": "pt-production",
+                    "status": "failed"
+                }
+            ]
+        },
+        {
+            "group": 2,
+            "name": "",
+            "canStart": false,
+            "status": "not started",
+            "environments": [
+                {
+                    "name": "ie-production",
+                    "status": "not started"
+                },
+                {
+                    "name": "se-production",
+                    "status": "not started"
+                }
+            ]
+        },
+        {
+            "group": 3,
+            "name": "",
+            "canStart": false,
+            "status": "not started",
+            "environments": [
+                {
+                    "name": "nl-production",
+                    "status": "not started"
+                },
+                {
+                    "name": "uk-production",
+                    "status": "not started"
+                }
+            ]
+        }
+    ]
+}
