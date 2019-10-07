@@ -6,22 +6,19 @@ resources:
 - deployment.yaml
 
 ## appended to the names of all resources
-nameSuffix: -2.0.8
+nameSuffix: -1.0.6
 
 ## labels to add to all resources
 commonLabels:
   app: sava-cart
-  version: 2.0.8
+  version: 1.0.6
 
 ## image tag
 images:
 - name: vampio/sava-cart
-  newTag: 2.0.8
-
+  newTag: 1.0.6
+  
 configMapGenerator:
 - name: sava-cart-configmap
   behavior: create
   env: sava-cart-configMap.env
-- name: sava-order-configmap
-  behavior: create
-  env: sava-order-configMap.env
